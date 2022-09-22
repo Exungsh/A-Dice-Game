@@ -35,6 +35,8 @@ def print_board():
     print('B:')
     for l in player_b:
         print(l)
+    print('A\'s point:' + str(count(player_a)))
+    print('B\'s point:' + str(count(player_b)))
 
 
 # 统计玩家分数 传入玩家列表 返回分数
@@ -80,7 +82,7 @@ def computer(player, arch):
     print('Now is Computer\'s round')
     get_num = random.randint(1, 6)
     print('Computer result is:' + str(get_num))
-    max_point = -162 # 最离谱分差
+    max_point = -162  # 最高分差
     best_row = 0
     best_col = 0
     for row in range(3):
@@ -92,32 +94,37 @@ def computer(player, arch):
                 copy_arch = copy.deepcopy(arch)
                 copy_player[row][col] = get_num
                 copy_arch = judge(col, get_num, copy_arch)
-                point = count(copy_player)-count(copy_arch)
+                point = count(copy_player) - count(copy_arch)
                 if point > max_point:
                     best_row = row
                     best_col = col
-                    print(str(row)+' '+str(col)+' '+str(point))
+                    print(str(row) + ' ' + str(col) + ' ' + str(point))
                     max_point = point
     player[best_row][best_col] = get_num
-    judge(best_col,get_num,arch)
+    judge(best_col, get_num, arch)
 
     return player
 
 
+model_flag = 0
+model = input('Which model, pvp or pve? (p/e)\n')
+if model == 'p':
+    model_flag = 1
 while 1:
+    # 玩家A进行操作
     player_a = play(player_a, 'A', player_b)
     print_board()
-    print('A\'s point:' + str(count(player_a)))
-    print('B\'s point:' + str(count(player_b)))
     if check(player_a):
         break
-    # player_b = play(player_b, 'B', player_a)
-    player_b = computer(player_b, player_a)
+    # 根据model_flag决定是玩家B还是机器人进行操作
+    if model_flag == 1:
+        player_b = play(player_b, 'B', player_a)
+    else:
+        player_b = computer(player_b, player_a)
     print_board()
-    print('A\'s point:' + str(count(player_a)))
-    print('B\'s point:' + str(count(player_b)))
     if check(player_b):
         break
+# 进行结算
 if count(player_a) > count(player_b):
     print('A win!!')
 elif count(player_a) < count(player_b):
