@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        var player_a = [
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0]
+        ];
+        var player_b = [
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0]
+        ];
+        col_cnt = [[0, 0, 0], [0, 0, 0], [0, 0, 0],[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]];
+        var can_done = [0, 0, 0]
+        var copy_player = JSON.parse(JSON.stringify(player_a));
+        var copy_ai = JSON.parse(JSON.stringify(player_b));
+        //====================================================
+        for(var i =0;i<3;i++){
+            for(var j = 0;j<3;j++){
+                col_cnt[copy_player[j][i]][i] += 1;
+                if(copy_ai[i][j] == 0)
+                {
+                    can_done[j]+=1;
+                }
+            }
+        }
+        //====================================================
+        if(NUM>=3){
+            for(var j =0;j<3;j++){
+                
+            }
+        }
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
