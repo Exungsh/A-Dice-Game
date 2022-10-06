@@ -26,8 +26,9 @@ a {
 body {
     background-color: #112d4e;
 }
+
 .float_window{
-    display: block; 
+    display: none; 
     position: absolute; 
     height: 200px;
     width: 400px;
@@ -119,6 +120,9 @@ body {
 .playboard button:active {
     transform: scale(0.95);
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+}
+.playboard button:hover {
+    transform: scale(1.05);
 }
 
 .A {
@@ -246,6 +250,10 @@ body {
     font-size: 30px;
     margin-bottom: 20px;
     box-shadow: 3px 3px 10px rgb(16, 55, 73);
+}
+#roll:hover,
+#restart:hover {
+    transform: scale(1.05);
 }
 
 .touzi button:active {

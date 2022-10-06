@@ -6,9 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="game.js"></script>
-    <script src="dice.js"></script>
-    <link rel="stylesheet" href="css/game.css">
+    <script src="computer.js"></script>
+    <link rel="stylesheet" href="css/computer.css">
 </head>
 
 <body>
@@ -18,13 +17,14 @@
         <div class="fw_op">
             <button onclick="closeDialog();restart();">Restart</button>
             <button onclick="window.location.href='index.html'">Menu</button>
-        </div>   
+        </div>
+        
     </div>
     <!-- 主界面 -->
     <div class="main">
         <!-- 左部状态栏 提示当前是谁的回合 -->
         <div class="bar">
-            <button class="whoround" id="who_A">A</button>
+            <button class="whoround" id="who_A">P</button>
             <button class="whoround" id="who_B"></button>
         </div>
         <!-- 棋盘 -->
@@ -61,13 +61,13 @@
             <div class="pointboard">
                 <div class="round">Point Board</div>
                 <div class="point">
-                    <span>A's point: </span><span id="ap">0</span>
+                    <span>Player's point: </span><span id="ap">0</span>
                 </div>
                 <div class="point">
-                    <span>B's point: </span><span id="bp">0</span>
+                    <span>Computer's point: </span><span id="bp">0</span>
                 </div>
                 <div class="window" id="window">
-                    A VS B
+                    Player VS Computer
                 </div>
             </div>
             <div class="touzi">
@@ -77,7 +77,7 @@
                     <br>
                     <button id="restart" onclick="restart()">Restart</button>
                 </div>
-                <script src="dice.js"></script>
+                <script src="computer.js"></script>
                 <script>
                     function g(id) {
                         return document.getElementById(id)
@@ -90,7 +90,6 @@
                             dom.attachEvent('on' + event, func)
                         }
                     }
-
                     var myDice = dice(document.getElementById('area'), {
                         edgeLength: 100,
                         radius: 0,
