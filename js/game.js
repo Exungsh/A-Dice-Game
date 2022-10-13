@@ -50,11 +50,7 @@ function check(player) {
                 count += 1;
         }
     }
-    if (count == 0) {
-        return 1;
-    } else {
-        return 0;
-    }
+    return (count == 0)
 }
 //输入列、对手棋盘名，消除对手该列所有和骰子值相同的数
 function judge(col, arch) {
@@ -67,26 +63,14 @@ function judge(col, arch) {
 //传入棋盘名，返回当前棋盘总分
 function count(player) {
     sum = 0;
-    count_dict = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
-    for (var i = 0; i < 3; i++) {
-        count_dict[player[i][0]] += 1;
-    }
-    for (num in count_dict) {
-        sum += num * count_dict[num] * count_dict[num];
-    }
-    count_dict = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
-    for (var i = 0; i < 3; i++) {
-        count_dict[player[i][1]] += 1;
-    }
-    for (num in count_dict) {
-        sum += num * count_dict[num] * count_dict[num];
-    }
-    count_dict = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
-    for (var i = 0; i < 3; i++) {
-        count_dict[player[i][2]] += 1;
-    }
-    for (num in count_dict) {
-        sum += num * count_dict[num] * count_dict[num];
+    for (var j = 0; j < 3; j++) {
+        count_dict = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
+        for (var i = 0; i < 3; i++) {
+            count_dict[player[i][j]] += 1;
+        }
+        for (num in count_dict) {
+            sum += num * count_dict[num] * count_dict[num];
+        }
     }
     return sum;
 }
@@ -144,7 +128,7 @@ function put_num_A(name, row, col) {
         }
     }
 }
-//顽疾B操作函数
+//玩家B操作函数
 function put_num_B(name, row, col) {
     if (place == 0) {
         x = document.getElementById("window");
