@@ -57,7 +57,7 @@ function check(player) {
                 count += 1;
         }
     }
-    return (count==0)
+    return (count == 0)
 }
 
 //输入列、对手棋盘名，消除对手该列所有和骰子值相同的数
@@ -72,7 +72,7 @@ function judge(col, arch) {
 //传入棋盘名，返回当前棋盘总分
 function count(player) {
     sum = 0;
-    for (var j = 0; j < 3; j++){
+    for (var j = 0; j < 3; j++) {
         count_dict = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 };
         for (var i = 0; i < 3; i++) {
             count_dict[player[i][j]] += 1;
@@ -197,7 +197,7 @@ function computer(ai, player) {
                 }
             }
             break;
-        } else if (NUM >= 3 && (col_cnt[4][j] >= 2 || col_cnt[5][j] >= 2 || col_cnt[6][j] >= 2 || col_cnt[3] == 3) && can_done[0] + can_done[1] + can_done[2] > can_done[j]) {
+        } else if (NUM >= 3 && (col_cnt[4][j] >= 2 || col_cnt[5][j] >= 2 || col_cnt[6][j] >= 2 || col_cnt[3][j] == 3) && can_done[0] + can_done[1] + can_done[2] > can_done[j]) {
             var max_point = -162;
             var best_row = 0;
             var best_col = 0;
@@ -229,7 +229,7 @@ function computer(ai, player) {
         }
 
         //================================================================================================================
-        else if (NUM < 3 && (col_cnt[4][j] >= 2 || col_cnt[5][j] >= 2 || col_cnt[6][j] >= 2 || col_cnt[3] == 3) && can_done[0] + can_done[1] + can_done[2] > can_done[j]) {
+        else if (NUM < 3 && (col_cnt[4][j] >= 2 || col_cnt[5][j] >= 2 || col_cnt[6][j] >= 2 || col_cnt[3][j] == 3) && can_done[0] + can_done[1] + can_done[2] > can_done[j]) {
             avoid_j = j;
             var colmax = 0;
             var done_max = 0;
